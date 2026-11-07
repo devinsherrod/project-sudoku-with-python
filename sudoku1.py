@@ -3,6 +3,12 @@ from clingo.application import Application, clingo_main
 
 
 class SudokuApp(Application):
+
+    def print_model(self, model, printer):
+        atoms = sorted(model.symbols(shown=True))
+        print(" ".join(str(atom) for atom in atoms))
+
+
     def main(self, control, files):
         for file in files:
             control.load(file)
